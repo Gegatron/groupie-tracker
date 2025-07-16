@@ -2,47 +2,42 @@ package main
 
 import (
 	"encoding/json"
-
+	"fmt"
 	"net/http"
-
-	
+	"text/template"
 )
 
+var artists []struct {
+	ID           int      `json:"id"`
+	Image        string   `json:"image"`
+	Name         string   `json:"name"`
+	Members      []string `json:"members"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
+	LocationsURL string   `json:"locations"`
+	DatesURL     string   `json:"concertDates"`
+	RelationsURL string   `json:"relations"`
+}
 
-var artists struct{
-	ID int 
-	Image string
-	Name string
-	Members []string
-	CreationDate int
-	FirstAlbum string
-	locationsurl string
-	datesurl string
-	relationsurl string
 
-}
-var locations struct{
-	ID int 
-	locations []string
-}
-var dates struct{
-	ID int
-	dates []string
-}
-var relations struct{
-	ID int
-	relations string
-}
-func main(){
-	
-	artist,err:=http.Get("https://groupietrackers.herokuapp.com/api/artists")
-	if err!=nil {
+func main() {
+	artist, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
+	if err != nil {
 		return
 	}
-	err=json.NewDecoder(artist.Body).Decode(&artists)
-	if err!=nil {
+	err = json.NewDecoder(artist.Body).Decode(&artists)
+	if err != nil {
 		return
 	}
+	http.HandleFunc("/", tracking)
+	http.ListenAndServe(":8080", nil)
+}
 
-	
+func tracking(w http.ResponseWriter, r *http.Request) {
+	temp, err := template.ParseFiles("templates/index.html")
+	if err != nil {
+		fmt.Println("error")
+		return
+	}
+	temp.Execute(w, artists)
 }
