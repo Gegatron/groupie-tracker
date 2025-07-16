@@ -1,0 +1,39 @@
+
+body {
+ font-family: "Pixelify Sans", sans-serif;
+   background: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
+
+
+.boxes{
+     background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+   text-align: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  padding: 9px;
+}
+.info{
+     background: rgb(202, 202, 202);
+     color: #000000bd;
+     border-radius: 12px;
+ 
+}
+.Image img{
+ width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+.boxes:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
