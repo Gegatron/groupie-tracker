@@ -4,14 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>infos</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+            rel="stylesheet">
 </head>
 <body>
    
-   
-  
-    {{.Locations.Index.Locations}}
-    <br>
-    {{.RelationsURL}}
+   <div class="data">
+        <h1>{{.Artist.Name}}</h1>
     
+    <div class="card">
+        <img src="{{.Artist.Image}}" alt="Image">
+        <pre>ID : {{.Artist.ID}}</pre> 
+        <br>
+        <pre>CreationDate : {{.Artist.CreationDate}}</pre>
+        <br>
+        <pre>FirstAlbum : {{.Artist.FirstAlbum}}</pre>
+    </div>
+    <br>    
+   <div class="Members">
+    <h2>Members</h2>
+    <br>
+    {{ range .Artist.Members}}
+    {{.}}
+    <br>
+    {{end}}
+   </div>
+   <br>
+   <div class="Dates">
+    <h2>Dates</h2>
+    <br>
+    {{ range .Dates.Dates}}
+    {{.}}
+    <br>
+    {{end}}
+   </div>
+   <br>
+   <div class="Relations">
+    <h2>Relations</h2>
+    <br>
+    {{ range .Relations.Relations}}
+    {{.}}
+    <br>
+    {{end}}
+   </div>
+   <br>
+   <div class="Locations">
+    <h2>Locations</h2>
+    <br>
+    {{ range .Locations.Locations}}
+    {{.}}
+    <br>
+    {{end}}
+   </div>
+    </div>
 </body>
 </html>

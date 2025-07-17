@@ -1,41 +1,50 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
     color: #333;
-    padding: 40px;
-    max-width: 800px;
-    margin: auto;
+    margin: 20px;
 }
 
-/* Style the image if present */
-img {
+.data {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    background: #fafafa;
+    text-align: center;
+}
+
+.card img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    border-radius: 6px;
 }
 
-/* Container for all info */
-.info-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+pre {
+    font-family: monospace;
+    background: #eaeaea;
+    padding: 6px 10px;
+    border-radius: 4px;
+    display: inline-block;
 }
 
-/* Each data row */
-.info-row {
-    margin-bottom: 15px;
-    line-height: 1.6;
+.Members, .Dates, .Relations, .Locations {
+    margin-top: 20px;
 }
 
-/* Label and value styling */
-.label {
-    font-weight: bold;
-    color: #555;
-}
-
-.value {
-    margin-left: 10px;
-    color: #000;
+.Members h2, .Dates h2, .Relations h2, .Locations h2 {
+    border-bottom: 2px solid #2980b9
 }
