@@ -18,27 +18,15 @@ var artists []struct {
 	FirstAlbum   string   `json:"firstAlbum"`
 }
 
-type LocationData struct {
-	   
-	Locations []string `json:"locations"`
-	
-}
-type DatesData struct {
-	
-	
-	Dates     []string   `json:"dates"`
-}
+
+
 type RelationsData struct {
 	
 	Relations map[string][]string `json:"datesLocations"`
 	
 }
-var LocationResponse struct {
-	Index []LocationData `json:"index"`
-}
-var DatesResponse struct {
-	Index []DatesData `json:"index"`
-}
+
+
 var RelationResponse struct {
 	Index []RelationsData `json:"index"`
 }
@@ -75,11 +63,9 @@ func ArtistsInfo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(artists[id-1].ID)
-	fmt.Println(LocationResponse.Index[id-1].Locations)
+
 	temp.Execute(w, map[string]interface{}{
 		"Artist" : artists[id-1],
-		"Locations":LocationResponse.Index[id-1],
-		"Dates" : DatesResponse.Index[id-1],
 		"Relations" : RelationResponse.Index[id-1],
 	})
 }
@@ -92,26 +78,9 @@ artist, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
 	if err != nil {
 		return
 	}
-	locations, err := http.Get("https://groupietrackers.herokuapp.com/api/locations")
-	if err != nil {
-		fmt.Println("fffc")
-		return
-	}
-	err = json.NewDecoder(locations.Body).Decode(&LocationResponse)
-	if err != nil {
-		fmt.Println("ffbf")
-		return
-	}
-	dates, err := http.Get("https://groupietrackers.herokuapp.com/api/dates")
-	if err != nil {
-		fmt.Println("ffgf")
-		return
-	}
-	err = json.NewDecoder(dates.Body).Decode(&DatesResponse)
-	if err != nil {
-		fmt.Println("ffaf",err)
-		return
-	}
+	
+	
+
 	
 	relations, err := http.Get("https://groupietrackers.herokuapp.com/api/relation")
 	if err != nil {

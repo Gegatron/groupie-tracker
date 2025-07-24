@@ -38,7 +38,7 @@
    <div class="Dates">
     <h2>Dates</h2>
     <br>
-    {{ range .Dates.Dates}}
+    {{ range .Relations.Relations}}
     {{.}}
     <br>
     {{end}}
@@ -47,17 +47,21 @@
    <div class="Relations">
     <h2>Relations</h2>
     <br>
-    {{ range .Relations.Relations}}
+    {{ range $key,$value:= .Relations.Relations}}
+    {{$key}}:
+    <br>
+    {{range $value}}
     {{.}}
     <br>
+    {{end}}
     {{end}}
    </div>
    <br>
    <div class="Locations">
     <h2>Locations</h2>
     <br>
-    {{ range .Locations.Locations}}
-    {{.}}
+    {{ range $key,$value:= .Relations.Relations}}
+    {{$key}}
     <br>
     {{end}}
    </div>
