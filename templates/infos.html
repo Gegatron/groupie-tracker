@@ -39,8 +39,10 @@
     <h2>Dates</h2>
     <br>
     {{ range .Relations.Relations}}
+    {{range .}}
     {{.}}
     <br>
+    {{end}}
     {{end}}
    </div>
    <br>
